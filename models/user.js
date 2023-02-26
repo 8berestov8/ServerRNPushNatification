@@ -10,6 +10,7 @@ const user = new Schema({
 		required: true,
 	},
 	fcmtoken: String,
+	platform: String,
 });
 
 module.exports = model('User', user);

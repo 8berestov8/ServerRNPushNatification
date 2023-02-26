@@ -23,11 +23,12 @@ router.get('/', async (req, res) => {
 
 router.post('/create', async (req, res) => {
 	console.log(req.query, req.body, req.params);
-	const { username, password, fcmtoken } = req.body;
+	const { username, password, fcmtoken, platform } = req.body;
 	await User.create({
 		username: username,
 		password: sha(password),
 		fcmtoken: fcmtoken,
+		platform: platform,
 	})
 		.then((doc) => {
 			res.json(doc);
@@ -43,12 +44,13 @@ router.get('/find', async (req, res) => {
 			//send push
 			const message = {
 				notification: {
-					title: '',
-					body: '',
+					title: `${req.query.title}`,
+					body: `${req.query.message}`,
+					sound: 'enable',
 				},
 				data: {
-					title: '',
-					body: '',
+					title: `${req.query.title}`,
+					body: `${req.query.message}`,
 				},
 			};
 
@@ -60,7 +62,8 @@ router.get('/find', async (req, res) => {
 				.messaging()
 				.sendToDevice(doc.fcmtoken, message, notification_options)
 				.then((response) => {
-					res.status(200).send('Notification sent successfully', response);
+					console.log('Notification sent successfully', response);
+					// res.status(200).send('Notification sent successfully', response);
 				})
 				.catch((error) => {
 					console.log(error);
