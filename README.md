@@ -1,4 +1,4 @@
-# Server for React Native Push Natificatoin
+# Server for React Native Push Notification
 
 ## Installation
 
