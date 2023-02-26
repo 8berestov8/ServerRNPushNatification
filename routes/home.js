@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
-	console.log(req.query, req.body, req.params);
+	// console.log(req.query, req.body, req.params);
 	const { username, password, fcmtoken, platform } = req.body;
 	await User.create({
 		username: username,
@@ -37,7 +37,7 @@ router.post('/create', async (req, res) => {
 });
 
 router.get('/find', async (req, res) => {
-	console.log(req.query, req.body, req.params);
+	// console.log(req.query, req.body, req.params);
 
 	await User.findById(req.query.id)
 		.then((doc) => {
@@ -63,7 +63,6 @@ router.get('/find', async (req, res) => {
 				.sendToDevice(doc.fcmtoken, message, notification_options)
 				.then((response) => {
 					console.log('Notification sent successfully', response);
-					// res.status(200).send('Notification sent successfully', response);
 				})
 				.catch((error) => {
 					console.log(error);
@@ -72,6 +71,19 @@ router.get('/find', async (req, res) => {
 
 		.catch((err) => console.error(err));
 	res.redirect('/');
+});
+
+router.post('/auth', async (req, res) => {
+	// console.log(req.query, req.body, req.params);
+	const { username, password } = req.body;
+	await User.findOne({
+		username: username,
+		password: sha(password),
+	})
+		.then((doc) => {
+			res.json(doc);
+		})
+		.catch((err) => console.error(err));
 });
 
 module.exports = router;
