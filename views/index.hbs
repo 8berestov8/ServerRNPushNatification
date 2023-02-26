@@ -1,28 +1,55 @@
 <h3>List users</h3>
 
-<div id='card'>
+<div id='user-table'>
 	{{#if users.length}}
 		<table>
 			<thead>
 				<tr>
-					<th>Название</th>
-					<th>Количество</th>
-					<th>Действия</th>
+					<th>Username</th>
+					<th>Device</th>
+					<th>Send Push</th>
 				</tr>
 			</thead>
 			<tbody>
 
 				{{#each users}}
 					<tr>
-						<td>{{title}}</td>
-						<td>{{count}}</td>
+						<td> {{username}}</td>
+						<td>Iphone 12</td>
 						<td>
 							<button
-								class='btn btm-small js-remove'
+								data-target='modal1'
+								class='btn modal-trigger open-modal'
 								data-id='{{id}}'
-							>Удалить</button>
+							>Send Push</button>
 						</td>
 					</tr>
+
+					<!-- Modal Structure -->
+					<div id='modal1' class='modal'>
+						<div class='modal-content'>
+							<form>
+								<h4>Push sender</h4>
+								<div class='input-field'>
+									<input type='text' name='title' id='title' />
+									<label>Title</label>
+								</div>
+								<div class='input-field'>
+									<input type='text' name='message' id='message' />
+									<label>Message</label>
+								</div>
+								<div class='modal-footer'>
+									<button
+										class='modal-action modal-close waves-effect waves-green btn-flat'
+									>Cancel</button>
+									<button
+										type='submit'
+										class='btn-flat modal-close waves-effect waves-green send-push'
+									>Send</button>
+								</div>
+							</form>
+						</div>
+					</div>
 				{{/each}}
 			</tbody>
 		</table>
