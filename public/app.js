@@ -21,7 +21,7 @@ $modal.addEventListener('click', (event) => {
 			message: message,
 		};
 
-		fetch(`/find?id=${id}&title=${title}&message=${message}`, data, {
+		fetch(`/api/find?id=${id}&title=${title}&message=${message}`, data, {
 			method: 'GET',
 		}).then((response) => {
 			return response.text();
