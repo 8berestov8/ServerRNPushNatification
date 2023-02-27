@@ -30,7 +30,7 @@ npm run start
 For admin panel go to
 
 ```sh
-http://localhost:4000
+http://localhost:4000/api
 ```
 
 MIT
