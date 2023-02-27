@@ -51,6 +51,7 @@ router.get('/find', async (req, res) => {
 				data: {
 					title: `${req.query.title}`,
 					body: `${req.query.message}`,
+					type: 'Notification',
 				},
 			};
 
