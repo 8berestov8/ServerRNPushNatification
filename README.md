@@ -5,13 +5,13 @@
 Server requires [Node.js](https://nodejs.org/) v14+ to run.
 
 ```sh
-git clone https://github.com/8berestov8/ServerRNPushNatification.git
+git clone https://github.com/8berestov8/ServerRNPushNotification.git
 ```
 
 Install the dependencies and devDependencies and start the server.
 
 ```sh
-cd ServerRNPushNatification
+cd ServerRNPushNotification
 npm install
 ```
 
