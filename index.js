@@ -41,7 +41,7 @@ app.use(
 	})
 );
 
-app.use(homeRoutes);
+app.use('/api', homeRoutes);
 
 const PORT = process.env.PORT || 4000;
 
