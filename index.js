@@ -48,7 +48,7 @@ const PORT = process.env.PORT || 4000;
 async function start() {
 	try {
 		mongoose.set('strictQuery', true);
-		const url = DB_PATH;
+		const url = `mongodb+srv://8berestov8:tovj5TTdSxgBuw70@cluster0.kzlvehy.mongodb.net/test`;
 		await mongoose.connect(url, {
 			useNewUrlParser: true,
 		});
